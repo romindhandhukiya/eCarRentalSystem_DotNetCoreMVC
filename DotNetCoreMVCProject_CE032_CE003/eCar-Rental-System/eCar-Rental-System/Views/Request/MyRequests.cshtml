@@ -1,0 +1,54 @@
+﻿@model IEnumerable<eCar_Rental_System.Models.Request>
+@{
+    ViewData["Title"] = "My Requests";
+}
+
+<h1>My Requests</h1>
+<hr />
+
+@if(!Model.Any())
+{
+    <center><h1>No Request Added !!</h1></center>
+}
+else
+{
+
+<div class="row">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th class="col-lg-2 col-md-6 col-sm-10">Name</th>
+                <th class="col-lg-2 col-md-6 col-sm-10">Seat</th>
+                <th class="col-lg-2 col-md-6 col-sm-10">Starting Date</th>
+                <th class="col-lg-2 col-md-6 col-sm-10">Ending Date</th>
+                <th class="col-lg-2 col-md-6 col-sm-10">Status</th>
+                <th class="col-lg-2 col-md-6 col-sm-10">Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var request in Model)
+            {
+                <tr>
+                    <td class="col-lg-2 col-md-6 col-sm-10">@request.car.Name</td>
+                    <td class="col-lg-2 col-md-6 col-sm-10">@request.car.No_Seat</td>
+                    <td class="col-lg-2 col-md-6 col-sm-10">@request.StartingDate</td>
+                    <td class="col-lg-2 col-md-6 col-sm-10">@request.EndingDate</td>
+                    <td class="col-lg-2 col-md-6 col-sm-10">@request.Status</td>
+                    <td class="col-lg-2 col-md-6 col-sm-10">
+                        @if (request.Status == "Pending")
+                        {
+                            <a class="btn btn-dark" asp-controller="Request" asp-action="EditRequest" asp-route-id="@request.Id">Edit</a>
+                                    
+                            <a class="btn btn-dark" asp-controller="Request" asp-action="DeleteRequest" asp-route-id="@request.Id">Delete</a>
+
+                        }
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+}

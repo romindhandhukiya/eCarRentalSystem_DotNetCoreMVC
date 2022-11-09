@@ -1,0 +1,72 @@
+﻿@model eCar_Rental_System.Models.Request
+@{
+    ViewData["Title"] = "Delete Request";
+}
+
+<h1>Delete Request</h1>
+<hr />
+
+<img src="~/images/@Model.car.PhotoPath" style="width:300px; height:300px;" />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<div class="vl" style="border-left: 1px solid; height:400px; display:inline-block; vertical-align:top;"></div>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<div style="display:inline-block; vertical-align:top">
+
+    <table class="nav-justified">
+        <tr>
+            <td style="width: 142px"><label>Name:</label>&nbsp;</td>
+            <td>
+                @Model.car.Name
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 142px"><label>Description:</label>&nbsp;</td>
+            <td>
+                @Model.car.Description
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 142px"><label>Fuel Type:</label>&nbsp;</td>
+            <td>
+                @Model.car.FuelType
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 142px"><label>Rate:</label>&nbsp;</td>
+            <td>
+                @Model.car.Rate
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 142px"><label>seats:</label>&nbsp;</td>
+            <td>
+                @Model.car.No_Seat
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 142px"><label>Starting Date:</label>&nbsp;</td>
+            <td>
+                @Model.StartingDate
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 142px"><label>Ending Date:</label>&nbsp;</td>
+            <td>
+                @Model.EndingDate
+            </td>
+        </tr>
+    </table>
+
+    <br />
+    <br />
+
+    <form method="post" asp-controller="Request" asp-action="DeleteRequest">
+
+        <h4>Are you sure to delete a request ?</h4>
+        <br />
+        <button type="submit" class="btn btn-dark">Delete</button>&nbsp;&nbsp;
+        <a class="btn btn-dark" asp-controller="Request" asp-action="MyRequests">Back</a>
+    </form>
+
+</div>

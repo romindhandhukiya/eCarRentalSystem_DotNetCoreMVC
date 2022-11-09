@@ -1,0 +1,73 @@
+﻿@model eCar_Rental_System.Models.Request
+@{
+    ViewData["Title"] = "Edit Request";
+}
+
+<h1>Edit Request</h1>
+<hr />
+
+<img src="~/images/@Model.car.PhotoPath" style="width:300px; height:300px;" />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<div class="vl" style="border-left: 1px solid; height:400px; display:inline-block; vertical-align:top;"></div>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<div style="display:inline-block; vertical-align:top">
+
+    <table class="nav-justified">
+        <tr>
+            <td style="width: 142px"><label>Name:</label>&nbsp;</td>
+            <td>
+                @Model.car.Name
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 142px"><label>Description:</label>&nbsp;</td>
+            <td>
+                @Model.car.Description
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 142px"><label>Fuel Type:</label>&nbsp;</td>
+            <td>
+                @Model.car.FuelType
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 142px"><label>Rate:</label>&nbsp;</td>
+            <td>
+                @Model.car.Rate
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 142px"><label>seats:</label>&nbsp;</td>
+            <td>
+                @Model.car.No_Seat
+            </td>
+        </tr>
+    </table>
+
+    <br />
+    <br />
+
+    <form method="post" asp-controller="Request" asp-action="EditRequest">
+        <div class="form-group row">
+            <label asp-for="StartingDate" class="col-sm-5 col-form-label"></label>
+            <div class="col-sm-10 col-lg-10">
+                <input asp-for="StartingDate" class="form-control" placeholder="Car Name" />
+                <span asp-validation-for="StartingDate" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="EndingDate" class="col-sm-5 col-form-label"></label>
+            <div class="col-sm-10 col-lg-10">
+                <input asp-for="EndingDate" class="form-control" placeholder="Car Name" />
+                <span asp-validation-for="EndingDate" class="text-danger"></span>
+            </div>
+        </div>
+        <br />
+        <button type="submit" class="btn btn-dark">Edit Request</button>&nbsp;&nbsp;
+        <a class="btn btn-dark" asp-controller="Request" asp-action="MyRequests">Back</a>
+    </form>
+
+</div>

@@ -1,0 +1,42 @@
+﻿@model IEnumerable<eCar_Rental_System.Models.Car>
+@{
+    ViewData["Title"] = "Search Car";
+}
+
+<center>
+    <h1>Search Car</h1>
+    <form method="post">
+        <input type="number" class="form-control" style="display:inline-block; width:300px" placeholder="Enter number of seats" />
+        <button type="submit" class="btn btn-dark">Search</button>
+    </form>
+</center>
+<hr />
+
+@if (!Model.Any())
+{
+    <center><h1>No Car is Added !!</h1></center>
+}
+else
+{
+    <div class="row">
+        @foreach (var car in Model)
+        {
+            <div class="col-lg-3 col-md-6 col-sm-10 offset-md-0 offset-sm-1" style="margin-bottom: 10px;">
+                <div class="card">
+                    <img class="card-img" src="~/images/@car.PhotoPath" style="width:100%; height:200px;" />
+                    <div class="card-body">
+                        <b>Name:</b><p style="display:inline-block;">&nbsp;@car.Name</p>
+                        <br />
+                        <b>Fuel Type:</b><p style="display:inline-block;">&nbsp;@car.FuelType</p>
+                        <br />
+                        <b>Seat:</b><p style="display:inline-block;">&nbsp;@car.No_Seat</p>&nbsp;&nbsp;&nbsp;
+                        <b>Rate:</b><p style="display:inline-block;">&nbsp;&#8377;@car.Rate&nbsp;/km</p>
+                        <br />
+                        <a class="btn btn-dark" asp-controller="Request" asp-action="MakeRequest" asp-route-id="@car.Id">Make Request</a>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+}
